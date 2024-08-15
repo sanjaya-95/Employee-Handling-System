@@ -1,9 +1,11 @@
 package com.ems.employeemanagementsystem.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 @Entity
-
+@Data
+@Table(name = "employees")
 public class Employee {
 
     @Id
