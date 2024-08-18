@@ -1,5 +1,6 @@
 package com.ems.employeemanagementsystem.controller;
 
+import com.ems.employeemanagementsystem.dto.EmployeeDto;
 import com.ems.employeemanagementsystem.model.Employee;
 import com.ems.employeemanagementsystem.service.EmployeeService;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +33,12 @@ public class EmployeeController {
     public String deleteEmployeeById(@PathVariable(value = "id") long id){
         employeeService.deleteEmployeeById(id);
         return "Employee Deleted";
+    }
+
+    @GetMapping("/getEmployeeById")
+    public EmployeeDto getEmployeeById(@RequestParam(value = "id") long id){
+        EmployeeDto viewEmployee = employeeService.getEmployeeById(id);
+        return viewEmployee;
     }
 
 

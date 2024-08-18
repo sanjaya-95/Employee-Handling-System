@@ -37,4 +37,17 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepo.deleteById(id);
         return null;
     }
+
+    @Override
+    public EmployeeDto getEmployeeById(long id) {
+        if(employeeRepo.existsById(id)){
+            Employee employee = employeeRepo.getReferenceById(id);
+            EmployeeDto employeeDto = modelMapper.map(employee, EmployeeDto.class);
+            return employeeDto;
+        }else {
+            throw new RuntimeException("No Employee Found in this Id");
+        }
+
+    }
+
 }
